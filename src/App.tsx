@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from './components/Navbar/Navbar';
+import { Home, JenisBuku, KoleksiBuku, Login, Register } from './pages';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      {/* <nav>
+        <Link to='/'>Home</Link> |
+        <Link to='/JenisBuku'>JenisBuku</Link>
+      </nav> */}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/JenisBuku' element={<JenisBuku />} />
+        <Route path='/KoleksiBuku' element={<KoleksiBuku />} />
+        <Route path='/Login' element={<Login />} />
+        <Route path='/Register' element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
