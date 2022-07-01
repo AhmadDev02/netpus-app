@@ -1,12 +1,16 @@
-import React from 'react'
 import { Layer10, Layer11, Layer4, Layer5, Layer7, Layer9 } from '../../img/indexImage';
 import Footer from '../../components/Footer/Footer'
 import './Home.css';
 import { Link } from "react-router-dom";
+import Navbar from '../../components/Navbar/Navbar';
+import React from 'react'
+
 
 const Home = () => {
+
     return (
         <>
+            <Navbar />
             {/* ini adlaah coureasel */}
             <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-indicators">
@@ -14,7 +18,7 @@ const Home = () => {
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-                <div className="carousel-inner">
+                <div className="carousel-inner" >
                     <div className="carousel-item active">
                         <img className='bd-placeholder-img'
                             width="100%" height="100%" src={Layer5} alt='layer5' />
@@ -77,7 +81,7 @@ const Home = () => {
                 <hr className="featurette-divider" />
                 <div className="row featurette">
                     <div className="col-md-7 order-md-2">
-                        <h2 className="featurette-heading fw-normal lh-1">Layanan Yang Ada Di NetPus :</h2>
+                        <h2 className="featurette-heading fw-normal lh-1">Layanan Yang Ada Di NetPus:</h2>
                         <p className="lead">
                             <ul>
                                 <li>
@@ -128,3 +132,5 @@ const Home = () => {
 }
 
 export default Home
+
+
