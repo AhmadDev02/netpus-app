@@ -5,7 +5,8 @@ import "./App.css";
 import { UserAuthContextProvider } from './context/UserAuthContext';
 
 // import Navbar from './components/Navbar/Navbar';
-import { Home, JenisBuku, KoleksiBuku, Login, ProtectedRoute, Register } from './pages';
+import { Home, JenisBuku, KoleksiBuku, Login, Newest, ProtectedRoute, Register, } from './pages';
+
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               />
               <Route path='/' element={<Login />} />
               <Route path="/Register" element={<Register />} />
+              <Route path="/Newest" element={<Newest />} />
               <Route path="/JenisBuku" element={<JenisBuku />} />
               <Route path="/KoleksiBuku" element={<KoleksiBuku />} />
             </Routes>

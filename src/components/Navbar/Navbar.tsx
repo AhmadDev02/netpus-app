@@ -42,9 +42,9 @@ function Navbar() {
                                 </li>
                             </ul>
 
-                            <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                            {/* <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                                 <input type="search" className="form-control" placeholder="Search..." aria-label="Search" />
-                            </form>
+                            </form> */}
                             <div className="d-flex align-items-center">
                                 <div className=" text-end">
                                     <Link to={''} className="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

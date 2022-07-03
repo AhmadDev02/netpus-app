@@ -1,24 +1,35 @@
-import { Layer10, Layer11, Layer4, Layer5, Layer7, Layer9 } from '../../img/indexImage';
-import Footer from '../../components/Footer/Footer'
-import './Home.css';
+import react, { useState } from "react";
+import { Layer13, Layer10, Layer5, Layer9 } from '../../img/indexImage';
+import Card from "./Card";
+import axios from "axios"; 
+import Footer from "../../components/Footer/Footer";
+import './Style.css';
+import Navbar from "../../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
-import Navbar from '../../components/Navbar/Navbar';
-import React from 'react'
 
-
-const Home = () => {
-
-    return (
+const Home=()=>{
+    const [search, setSearch]=useState("");
+    const [bookData,setData]=useState([]);
+    const searchBook=(evt: { key: any; })=>{
+        if(evt.key==="Enter")
+        {
+            axios.get('https://www.googleapis.com/books/v1/volumes?q='+search+'&key=AIzaSyDYiKbgt3KxDaNvo8sE2E-WCWIE9pfs3HA'+'&maxResults=40')
+            .then(res=>setData(res.data.items))
+            .catch(err=>console.log(err))
+        }
+    }
+    return(
         <>
-            <Navbar />
-            {/* ini adlaah coureasel */}
+        <Navbar />
+        
+            {/* Ini adalah Carousel */}
             <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-indicators">
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-                <div className="carousel-inner" >
+                <div className="carousel-inner">
                     <div className="carousel-item active">
                         <img className='bd-placeholder-img'
                             width="100%" height="100%" src={Layer5} alt='layer5' />
@@ -26,7 +37,7 @@ const Home = () => {
                             <div className="carousel-caption text-start">
                                 <h1>Good Days Everyone</h1>
                                 <p>Semoga hari kamu menyenangkan dengan membaca buku digital </p>
-                                <p><Link className="btn btn-lg btn-primary" to="/Register">Register</Link></p>
+                                <p><Link className="btn btn-lg btn-primary" to="#">Find Your Book Here</Link></p>
                             </div>
                         </div>
                     </div>
@@ -35,9 +46,9 @@ const Home = () => {
                             width="100%" height="100%" src={Layer10} alt='layer10' />
                         <div className="container">
                             <div className="carousel-caption">
-                                <h1>Buku Terfavorit Di NETPUS</h1>
-                                <p>Ini adalah buku terfavorit dalam seminggu ini . Silahkan membaca dan happy nice days</p>
-                                <p><Link className="btn btn-lg btn-primary" to="#">Learn more</Link></p>
+                                <h1>Newest Book In NETPUS</h1>
+                                <p>Ini adalah buku terbaru dalam seminggu ini . Silahkan membaca dan happy nice days</p>
+                                <p><Link className="btn btn-lg btn-primary" to="/Newest">Learn more</Link></p>
                             </div>
                         </div>
                     </div>
@@ -63,74 +74,34 @@ const Home = () => {
                 </button>
             </div>
 
-            {/* Ini Body HOME */}
-            <div className="container marketing" >
-                <div className="row featurette">
-                    <div className="col-md-7">
-                        <h2 className="featurette-heading fw-normal lh-1">NETPUS</h2>
-                        <p className="lead">NetPus adalah sebuah aplikasi website perpustakaan berbasis digital
-                            yang dibuat untuk memudahkan dalam membaca dan juga meningkatkan daya baca pengguna khususnya
-                            di era modern sekarang ini.
-                        </p>
-                    </div>
-                    <div className="col-md-5">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                            width="500" height="500" src={Layer4} alt='layer1' />
-                    </div>
+            {/* Ini adalah Header + Kolom search buku */}
+            <div className="header">
+                <div className="row1">
+                    <h1>A room without books is like<br/> a body without a soul.</h1>
                 </div>
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                    <div className="col-md-7 order-md-2">
-                        <h2 className="featurette-heading fw-normal lh-1">Layanan Yang Ada Di NetPus:</h2>
-                        <p className="lead">
-                            <ul>
-                                <li>
-                                    Akses Bisa Dimana Saja
-                                </li>
-                                <li>
-                                    Buku Berasal Dari Sumber Refrensi Terkemuka
-                                </li>
-                                <li>
-                                    Beragam Pilihan Buku
-                                </li>
-                                <li>
-                                    Mudah Dicari
-                                </li>
-                            </ul>
-
-                        </p>
+                <div className="row2">
+                    <h2>Find Your Book</h2>
+                    <div className="search">
+                        <input type="text" placeholder="Enter Your Book Name"
+                        value={search} onChange={e=>setSearch(e.target.value)}
+                        onKeyPress={searchBook}/>
+                        <button><i className="fas fa-search"></i></button>
                     </div>
-                    <div className="col-md-5 order-md-1">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                            width="500" height="500" src={Layer7} alt='layer2' />
-                    </div>
-                </div>
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                    <div className="col-md-7">
-                        <h2 className="featurette-heading fw-normal lh-1">Pengguna NetPus</h2>
-                        <p className="lead">
-                            Pengguna NetPus bisa dari kalangan anak muda di umur 5-15 Tahun dan juga
-                            kaum remaja di umur 15-30 tahun dan seterusnya. Tidak ada kata terlambat
-                            dalam mengejar ilmu pengetahuan baik itu dari dalam negeri maunpun luar
-                            negeri. Semoga dengan adanya layanan Internet Perpustakaan NetPus bisa memberikan
-                            hal terbaik dalam membantu user hal membaca.
-                        </p>
-                    </div>
-                    <div className="col-md-5">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                            width="500" height="500" src={Layer11} alt='layer3' />
-                    </div>
-                </div>
-                <hr className="featurette-divider" />
+                    <img src="../../img/2.png" alt=""/>
+                    <img className='beranda-img-1'
+                            width="100%" height="100%" src={Layer13} alt='layer13' />
+                </div>   
             </div>
 
-            {/* Ini adalah Footer */}
+
+            {/* Ini adalah Container untuk buku */}
+            <div className="container">
+                {
+                    <Card book={bookData}/>
+                }
+            </div>
             <Footer />
         </>
     )
 }
-
-export default Home
-
-
+export default Home;
