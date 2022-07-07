@@ -4,12 +4,12 @@ import React, { useEffect, useState} from 'react'
 import Footer from '../../components/Footer/Footer'
 import Navbar from '../../components/Navbar/Navbar';
 
-const KoleksiBuku = () => {
+const Story = () => {
 
 
     const [data, setData] = useState<any[]>([])
     const getData = async() => {
-        await fetch('https://www.googleapis.com/books/v1/volumes/?q=belajar&key=AIzaSyAtM9oy6pZ3r1jwDqSIA_2fO4Yy57J03Eg&maxResults=40').then(res=> res.json()).then(res => (
+        await fetch('https://www.googleapis.com/books/v1/volumes/?q=story&key=AIzaSyAtM9oy6pZ3r1jwDqSIA_2fO4Yy57J03Eg&maxResults=40').then(res=> res.json()).then(res => (
             setData(res.items)
         ))
     }
@@ -50,4 +50,4 @@ const KoleksiBuku = () => {
     )
 }
 
-export default KoleksiBuku
+export default Story

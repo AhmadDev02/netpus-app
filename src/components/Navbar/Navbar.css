@@ -37,6 +37,10 @@ body {
     margin-bottom: 1.5rem;
     text-align: center;
 }
+.dropdown-item:hover{
+    background-color: #000;
+    padding: 1.5rem;
+}
 
 /* rtl:begin:ignore */
 .marketing .col-lg-4 p {

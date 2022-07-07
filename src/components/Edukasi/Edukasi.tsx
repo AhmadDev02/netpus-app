@@ -4,12 +4,12 @@ import React, { useEffect, useState} from 'react'
 import Footer from '../../components/Footer/Footer'
 import Navbar from '../../components/Navbar/Navbar';
 
-const KoleksiBuku = () => {
+const Edukasi = () => {
 
 
     const [data, setData] = useState<any[]>([])
     const getData = async() => {
-        await fetch('https://www.googleapis.com/books/v1/volumes/?q=belajar&key=AIzaSyAtM9oy6pZ3r1jwDqSIA_2fO4Yy57J03Eg&maxResults=40').then(res=> res.json()).then(res => (
+        await fetch('https://www.googleapis.com/books/v1/volumes/?q=edukasi&key=AIzaSyAtM9oy6pZ3r1jwDqSIA_2fO4Yy57J03Eg&maxResults=40').then(res=> res.json()).then(res => (
             setData(res.items)
         ))
     }
@@ -28,7 +28,7 @@ const KoleksiBuku = () => {
             {data.map((d, id) => (
                 <div key={id} className='mx-3 mb-2'>
                     <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" style={{ height: '15rem' }}src={d.volumeInfo.imageLinks.smallThumbnail} />
+                        <Card.Img variant="top" style={{ height: '15rem' }} src={d.volumeInfo.smallThumbnail} />
                         <Card.Body>
                         <Card.Title>{d.volumeInfo.title}</Card.Title>
                         <Card.Text>
@@ -50,4 +50,4 @@ const KoleksiBuku = () => {
     )
 }
 
-export default KoleksiBuku
+export default Edukasi
