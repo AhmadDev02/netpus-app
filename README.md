@@ -34,7 +34,7 @@ Running Website
 <table>
   <tr>
     <td>
-      <img src="img/1.jpeg">
+      <img src="src/img/1.jpeg">
     </td>
   </tr>
 </table>
